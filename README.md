@@ -1,4 +1,6 @@
-# PDF Flipbook Website — Odoo 18 Community
+recuerda ... estoy de pruebas   NO USAR ...   PARO SI AYUDAR
+
+PDF Flipbook Website — Odoo 18 Community
 
 ## Instalación
 
@@ -20,4 +22,5 @@ Funciona con Odoo 18 Community. Compatible con Chrome, Firefox, Safari, Edge. Re
 
 - Internacionalización (`i18n`).
 - Accesibilidad (etiquetas ARIA).
+
 - Controles adicionales (zoom, fullscreen, navegación).
