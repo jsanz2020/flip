@@ -32,12 +32,10 @@
     <field name="view_mode">tree,form</field>
   </record>
 
-  <menuitem id="menu_flipbook_root"
-            name="Flipbooks"
-            parent="website.menu_website_configuration"
-            sequence="10"/>
   <menuitem id="menu_flipbook"
-            name="Gestor de Flipbooks"
-            parent="menu_flipbook_root"
-            action="action_flipbook"/>
+          name="Flipbooks" parent="website.menu_website_configuration"
+          action="action_flipbook"
+          sequence="10"/>
+  
 </odoo>
+
