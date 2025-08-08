@@ -8,7 +8,6 @@
     "data": [
         "views/flipbook_views.xml",        ← Asegura que el modelo ya existe
         "security/ir.model.access.csv",    ← Ahora el CSV puede encontrar el modelo
-        "views/assets.xml",
         "views/templates.xml",
         "views/snippet.xml"
             ],
@@ -23,3 +22,4 @@
     },
     "license": "LGPL-3"
 }
+
