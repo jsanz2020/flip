@@ -1,2 +1,3 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_flipbook_model,access_flipbook_model,model_website_flipbook,,1,1,1,1
+# security/ir.model.access.csv
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_delete
+access_website_flipbook_manager,flipbook.manager,model_website_flipbook,website.group_website_designer,1,1,1,1
