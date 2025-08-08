@@ -1,0 +1,8 @@
+<odoo>
+  <template id="flipbook_template" name="Flipbook Viewer">
+    <div class="o_flipbook_wrapper" data-flipbook-id="0">
+      <div id="flipbook" class="flipbook"/>
+    </div>
+  </template>
+</odoo>
+

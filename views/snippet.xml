@@ -1,0 +1,9 @@
+<odoo>
+  <template id="snippet_flipbook" inherit_id="website.snippets" name="PDF Flipbook Snippet">
+    <xpath expr="//div[@id='snippet_structure']" position="inside">
+      <t t-snippet="pdf_flipbook_website.flipbook_template"
+         t-thumbnail="/web/image/website.s_icon_file"
+         t-value="{'flipbook_id': 0}" />
+    </xpath>
+  </template>
+</odoo>

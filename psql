@@ -1,0 +1,29 @@
+pdf_flipbook_website/
+├── __init__.py
+├── __manifest__.py
+├── README.md
+├── models/
+│   ├── __init__.py
+│   └── flipbook.py
+├── controllers/
+│   ├── __init__.py
+│   └── main.py
+├── views/
+│   ├── assets.xml
+│   ├── flipbook_views.xml
+│   ├── templates.xml
+│   └── snippet.xml
+├── static/
+│   └── src/
+│       ├── lib/
+│       │   ├── pdfjs/
+│       │   │   ├── pdf.min.js
+│       │   │   └── pdf.worker.min.js
+│       │   └── turnjs/
+│       │       └── turn.min.js
+│       ├── js/
+│       │   └── flipbook_widget.js
+│       └── css/
+│           └── flipbook_styles.css
+└── security/
+    └── ir.model.access.csv
