@@ -1,16 +1,18 @@
+# controllers/main.py
 from odoo import http
 from odoo.http import request
-import base64
 
 class FlipbookController(http.Controller):
 
-    @http.route(['/flipbook/pdf/<int:flipbook_id>'], type='http', auth="public")
-    def serve_pdf(self, flipbook_id):
-        record = request.env['website.flipbook'].sudo().browse(flipbook_id)
-        if not record.exists() or not record.pdf_file:
+    @http.route('/get_flipbook_pdf/<int:flipbook_id>', type='http', auth="public", website=True)
+    def get_flipbook_pdf(self, flipbook_id, **kw):
+        flipbook = request.env['website.flipbook'].sudo().browse(flipbook_id)
+        if not flipbook or not flipbook.pdf_file:
             return request.not_found()
-        pdf = base64.b64decode(record.pdf_file)
-        return request.make_response(pdf, headers=[
-            ('Content-Type', 'application/pdf'),
-            ('Content-Disposition', f'inline; filename="{record.pdf_filename or "flipbook.pdf"}"')
-        ])
+        
+        # Devuelve el contenido del PDF directamente
+        return request.make_response(
+            flipbook.pdf_file,
+            [('Content-Type', 'application/pdf')]
+        )
+
