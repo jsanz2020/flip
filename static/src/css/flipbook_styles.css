@@ -1,17 +1,375 @@
+/* Estilos principales del flipbook */
 .o_flipbook_wrapper {
-  width: 100%;
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    min-height: 400px;
 }
+
 .flipbook {
-  width: 100%;
-  height: 500px;
-  background-color: #fff;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    width: 100%;
+    height: 600px;
+    background-color: #fff;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
 }
-.page img {
-  width: 100%;
-  height: auto;
-  display: block;
+
+.flipbook-page {
+    background: white;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.flipbook-page canvas {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+.flipbook-page-error {
+    background: #f8f9fa;
+    color: #6c757d;
+    border: 2px dashed #dee2e6;
+}
+
+/* Controles de navegación */
+.flipbook-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+}
+
+.flipbook-controls button {
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    font-size: 14px;
+}
+
+.flipbook-controls .btn-primary {
+    background: #007bff;
+}
+
+.flipbook-controls .btn-secondary {
+    background: #6c757d;
+}
+
+.flipbook-controls .btn-info {
+    background: #17a2b8;
+}
+
+.flipbook-controls button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.flipbook-controls .btn-primary:hover {
+    background: #0056b3;
+}
+
+.flipbook-controls .btn-secondary:hover {
+    background: #545b62;
+}
+
+.flipbook-controls .btn-info:hover {
+    background: #138496;
+}
+
+.flipbook-controls button:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+    transform: none;
+    opacity: 0.6;
+}
+
+.flipbook-controls button:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.flipbook-page-info {
+    font-weight: 500;
+    color: #495057;
+    font-size: 14px;
+    min-width: 120px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Estados de carga y error */
+.flipbook-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    color: #6c757d;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.flipbook-loading i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: spin 1s linear infinite;
+    color: #007bff;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.flipbook-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    color: #dc3545;
+    text-align: center;
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.flipbook-error i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.flipbook-retry {
+    margin-top: 15px;
+}
+
+/* Pantalla completa */
+.flipbook-fullscreen {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 9999 !important;
+    background: #000 !important;
+    margin: 0 !important;
+    padding: 20px !important;
+    border-radius: 0 !important;
+}
+
+.flipbook-fullscreen .flipbook {
+    width: 100% !important;
+    height: calc(100vh - 120px) !important;
+    max-width: none !important;
+}
+
+.flipbook-fullscreen .flipbook-controls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .o_flipbook_wrapper {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    .flipbook {
+        height: 400px;
+    }
+    
+    .flipbook-controls {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px;
+    }
+    
+    .flipbook-controls button {
+        width: 40px;
+        height: 40px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    .flipbook-page-info {
+        font-size: 12px;
+        min-width: 100px;
+        order: -1;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .flipbook {
+        height: 300px;
+    }
+    
+    .flipbook-controls {
+        padding: 10px;
+        gap: 8px;
+    }
+    
+    .flipbook-page-info {
+        font-size: 11px;
+        min-width: 80px;
+    }
+    
+    .flipbook-controls button {
+        width: 35px;
+        height: 35px;
+        font-size: 11px;
+    }
+}
+
+/* Efectos de hover para las páginas */
+.flipbook .turn-page {
+    background-color: white;
+    background-size: 100% 100%;
+    transition: box-shadow 0.3s ease;
+}
+
+.flipbook .turn-page:hover {
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Sombras y efectos 3D mejorados */
+.flipbook .hard {
+    background: #ccc !important;
+    color: #333;
+    border: 1px solid #999;
+}
+
+.flipbook .odd {
+    background-image: -webkit-linear-gradient(left, #fff 95%, #ddd 100%);
+    background-image: -moz-linear-gradient(left, #fff 95%, #ddd 100%);
+    background-image: -o-linear-gradient(left, #fff 95%, #ddd 100%);
+    background-image: -ms-linear-gradient(left, #fff 95%, #ddd 100%);
+    background-image: linear-gradient(to right, #fff 95%, #ddd 100%);
+}
+
+.flipbook .even {
+    background-image: -webkit-linear-gradient(right, #fff 95%, #ddd 100%);
+    background-image: -moz-linear-gradient(right, #fff 95%, #ddd 100%);
+    background-image: -o-linear-gradient(right, #fff 95%, #ddd 100%);
+    background-image: -ms-linear-gradient(right, #fff 95%, #ddd 100%);
+    background-image: linear-gradient(to left, #fff 95%, #ddd 100%);
+}
+
+/* Snippet editor styles */
+.o_we_flipbook_options {
+    padding: 10px;
+}
+
+.o_we_flipbook_select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+}
+
+/* Accesibilidad */
+.flipbook-controls button:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+.flipbook {
+    /* Mejorar accesibilidad */
+}
+
+/* Indicadores de carga por página */
+.flipbook-page.loading {
+    background: #f8f9fa;
+    position: relative;
+}
+
+.flipbook-page.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    margin: -15px 0 0 -15px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Animaciones mejoradas */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.flipbook-controls {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Mejoras para turn.js */
+.flipbook .turn-page-wrapper {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.flipbook .turn-page-wrapper:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Print styles */
+@media print {
+    .o_flipbook_wrapper {
+        box-shadow: none;
+        background: white;
+    }
+    
+    .flipbook-controls {
+        display: none;
+    }
+    
+    .flipbook {
+        box-shadow: none;
+        height: auto;
+    }
+    
+    .flipbook-page {
+        page-break-inside: avoid;
+        margin-bottom: 20px;
+    }
 }
