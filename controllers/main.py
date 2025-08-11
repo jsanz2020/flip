@@ -130,7 +130,7 @@ class FlipbookController(http.Controller):
                 'main_object': flipbook,
             }
             
-            return request.render('pdf_flipbook_website.flipbook_page_template', values)
+            return request.render('flip.flipbook_page_template', values)
             
         except Exception as e:
             _logger.error(f"Error mostrando flipbook {flipbook_id}: {e}")
