@@ -27,14 +27,14 @@
     ],
     "assets": {
         "web.assets_frontend": [
-            "pdf_flipbook_website/static/src/lib/pdfjs/pdf.min.js",
-            "pdf_flipbook_website/static/src/lib/pdfjs/pdf.worker.min.js", 
-            "pdf_flipbook_website/static/src/lib/turnjs/turn.min.js",
-            "pdf_flipbook_website/static/src/css/flipbook_styles.css",
-            "pdf_flipbook_website/static/src/js/flipbook_widget.js"
+            "flip/static/src/lib/pdfjs/pdf.min.js",
+            "flip/static/src/lib/pdfjs/pdf.worker.min.js", 
+            "flip/static/src/lib/turnjs/turn.min.js",
+            "flip/static/src/css/flipbook_styles.css",
+            "flip/static/src/js/flipbook_widget.js"
         ],
         "web.assets_backend": [
-            "pdf_flipbook_website/static/src/css/flipbook_backend.css"
+            "flip/static/src/css/flipbook_backend.css"
         ]
     },
     "external_dependencies": {

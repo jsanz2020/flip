@@ -4,7 +4,7 @@ PDF Flipbook Website — Odoo 18 Community
 
 ## Instalación
 
-1. Copia la carpeta `pdf_flipbook_website` dentro de tu carpeta `addons/`.
+1. Copia la carpeta `flip` dentro de tu carpeta `addons/`.
 2. Reinicia el servidor Odoo y actualiza la lista de módulos.
 3. Instala el módulo **PDF Flipbook Website**.
 
