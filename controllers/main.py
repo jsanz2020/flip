@@ -115,7 +115,7 @@ class FlipbookController(http.Controller):
             domain = [
                 ('id', '=', flipbook_id),
                 ('is_published', '=', True)
-            ])
+            ]
             
             if not request.env.user.has_group('base.group_system'):
                 domain.append(('company_id', 'in', request.env.companies.ids))
