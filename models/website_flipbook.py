@@ -1,6 +1,5 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
-from odoo.tools import html_escape
 import base64
 import logging
 import secrets
