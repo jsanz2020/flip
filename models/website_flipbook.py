@@ -159,9 +159,9 @@ class WebsiteFlipbook(models.Model):
     self.ensure_one()
         url = '/flip/%s?access_token=%s' % (self.id, self.access_token or '')
         return {
-        'type': 'ir.actions.act_url',
-        'url': url,
-        'target': 'new',
+            'type': 'ir.actions.act_url',
+            'url': url,
+            'target': 'new',
         }
 
 
