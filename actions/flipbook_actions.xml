@@ -1,0 +1,9 @@
+<odoo>
+    <!-- Acción para vista previa del Flipbook -->
+    <record id="action_flipbook_preview" model="ir.actions.act_url">
+        <field name="name">Vista Previa Flipbook</field>
+        <!-- Usamos placeholder para el ID, que se reemplazará en Python -->
+        <field name="url">/flip/%(id)s</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
