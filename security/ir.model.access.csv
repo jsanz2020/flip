@@ -1,4 +1,4 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_delete
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_website_flipbook_public,flipbook.public,model_website_flipbook,base.group_public,1,0,0,0
 access_website_flipbook_portal,flipbook.portal,model_website_flipbook,base.group_portal,1,0,0,0
 access_website_flipbook_user,flipbook.user,model_website_flipbook,base.group_user,1,0,0,0
