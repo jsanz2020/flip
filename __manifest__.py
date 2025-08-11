@@ -20,7 +20,8 @@
     "license": "LGPL-3",
     "depends": ["website", "mail"],
     "data": [
-        "security/ir.model.access.csv",    
+        "security/ir.model.access.csv",
+        "actions/flipbook_actions.xml",
         "views/flipbook_views.xml",        
         "views/templates.xml",
         "views/snippet.xml"
