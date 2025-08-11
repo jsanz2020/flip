@@ -157,11 +157,10 @@ class WebsiteFlipbook(models.Model):
     def action_preview_flipbook(self):
     """Abre una vista previa del flipbook en una nueva pestaña con token de acceso."""
     self.ensure_one()
-        url = '/flip/%s?access_token=%s' % (self.id, self.access_token or '')
-        return {
-            'type': 'ir.actions.act_url',
-            'url': url,
-            'target': 'new',
-        }
-
-
+    url = '/flip/%s?access_token=%s' % (self.id, self.access_token or '')
+    return {
+        'type': 'ir.actions.act_url',
+        'url': url,
+        'target': 'new',
+    }
+    
