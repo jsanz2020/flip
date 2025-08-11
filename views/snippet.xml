@@ -1,0 +1,101 @@
+<odoo>
+    <!-- Snippet para el editor de website -->
+    <template id="snippet_flipbook" inherit_id="website.snippets" name="PDF Flipbook Snippet">
+        <xpath expr="//div[@id='snippet_structure']" position="inside">
+            <t t-snippet="flip.snippet_flipbook_template" 
+               t-thumbnail="/flip/static/description/icon.png"
+               t-snippet-name="PDF Flipbook">
+                <t t-set="flipbook_id" t-value="0"/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- Opciones del snippet en el editor -->
+    <template id="snippet_flipbook_options" inherit_id="web_editor.snippet_options" name="Flipbook Options">
+        <xpath expr="." position="inside">
+            <div data-js="FlipbookOption" 
+                 data-selector=".o_flipbook_wrapper"
+                 data-drop-in=".o_flipbook_wrapper"
+                 data-drop-near="p, h1, h2, h3, blockquote, .well, .panel">
+                
+                <we-select string="Seleccionar Flipbook" 
+                          data-attribute-name="flipbookId"
+                          data-customize-website="true">
+                    <we-button data-select-data-attribute="0">Seleccionar...</we-button>
+                    <t t-foreach="request.env['website.flipbook'].sudo().search([('active', '=', True), ('website_published', '=', True)])" t-as="flipbook">
+                        <we-button t-att-data-select-data-attribute="flipbook.id" 
+                                  t-esc="flipbook.name"/>
+                    </t>
+                </we-select>
+
+                <we-row string="Configuración">
+                    <we-input string="Alto del flipbook" 
+                             data-unit="px" 
+                             data-attribute-name="height"
+                             placeholder="600"/>
+                    
+                    <we-checkbox string="Mostrar controles" 
+                                data-attribute-name="showControls"
+                                data-img="/web_editor/static/src/img/snippets_thumbs/s_text_image.jpg"/>
+                    
+                    <we-checkbox string="Auto-centrar" 
+                                data-attribute-name="autoCenter"
+                                data-img="/web_editor/static/src/img/snippets_thumbs/s_text_image.jpg"/>
+                </we-row>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- JavaScript para las opciones del snippet -->
+    <template id="snippet_flipbook_options_js" inherit_id="website.assets_wysiwyg" name="Flipbook Snippet Options JS">
+        <xpath expr="." position="inside">
+            <script type="text/javascript">
+                odoo.define('flip.snippet_options', function (require) {
+                    'use strict';
+
+                    const options = require('web_editor.snippets.options');
+
+                    options.registry.FlipbookOption = options.Class.extend({
+                        
+                        /**
+                         * Actualiza el flipbook cuando cambia la selección
+                         */
+                        _onFlipbookChange: function () {
+                            const flipbookId = this.$target.attr('data-flipbook-id');
+                            if (flipbookId && flipbookId !== '0') {
+                                this._refreshFlipbook();
+                            }
+                        },
+
+                        /**
+                         * Refresca el contenido del flipbook
+                         */
+                        _refreshFlipbook: function () {
+                            const $flipbook = this.$target.find('#flipbook');
+                            if ($flipbook.length) {
+                                // Reinicializar el widget del flipbook
+                                if (window.pdfjsLib && $flipbook.data('flipbook-initialized')) {
+                                    $flipbook.removeData('flipbook-initialized');
+                                    $flipbook.empty();
+                                }
+                                
+                                // Trigger reinitialización
+                                this.$target.trigger('flipbook:refresh');
+                            }
+                        },
+
+                        /**
+                         * Maneja cambios en los atributos
+                         */
+                        _onAttributeChange: function () {
+                            this._super.apply(this, arguments);
+                            this._onFlipbookChange();
+                        }
+                    });
+
+                    return options.registry.FlipbookOption;
+                });
+            </script>
+        </xpath>
+    </template>
+</odoo>
